@@ -1,0 +1,55 @@
+#include <WiFi.h>
+#include "DHT.h"
+#include "ThingSpeak.h"
+
+#define DHTPIN 15
+#define DHTTYPE DHT22
+#define MQ2PIN 34
+
+const char* ssid = "Wokwi-GUEST";      // Wokwi WiFi (works for simulation)
+const char* password = "";             // No password
+
+unsigned long channelID = YOUR_CHANNEL_ID;        // Replace with your ThingSpeak channel ID
+const char* writeAPIKey = "YOUR_WRITE_API_KEY";   // Replace with your Write API Key
+
+WiFiClient client;
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+  WiFi.begin(ssid, password);
+
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("Connected!");
+
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float hum = dht.readHumidity();
+  int mq2Value = analogRead(MQ2PIN);
+
+  Serial.println("Uploading to ThingSpeak...");
+  Serial.print("Temp: "); Serial.println(temp);
+  Serial.print("Humidity: "); Serial.println(hum);
+  Serial.print("Gas Level: "); Serial.println(mq2Value);
+
+  ThingSpeak.setField(1, temp);
+  ThingSpeak.setField(2, hum);
+  ThingSpeak.setField(3, mq2Value);
+
+  int response = ThingSpeak.writeFields(channelID, writeAPIKey);
+  if(response == 200){
+    Serial.println("Data sent successfully!");
+  } else {
+    Serial.print("Error: "); Serial.println(response);
+  }
+
+  delay(20000); // Wait 20 seconds (ThingSpeak limit)
+}
