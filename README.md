@@ -4,6 +4,17 @@ A smart IoT-based system using ESP32, DHT22, and MQ2 gas sensor to monitor tempe
 
 ---
 
+## 📋 Intern Details
+
+- **👨‍💼 Name:** Mohammed Abdul Ali Nabeel
+- **🎓 Intern ID:** CITS0D781
+- **🏢 Company:** CodTech IT Solutions
+- **🌐 Domain:** Internet of Things (IoT)
+- **📅 Internship Duration:** 4 Weeks
+- **🧑‍🏫 Mentor:** Neela Santhosh
+
+---
+
 ## 📦 Components Used
 
 | Component      | Description                          |
