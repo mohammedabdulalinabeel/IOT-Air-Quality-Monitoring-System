@@ -32,6 +32,12 @@ A smart IoT-based system using ESP32, DHT22, and MQ2 gas sensor to monitor tempe
 ## 🔧 Circuit Connections
 <img width="1066" height="585" alt="image" src="https://github.com/user-attachments/assets/593c0058-fb62-4b25-b4d3-34202af28bf3" />
 
+## OUTPUT
+<img width="1266" height="830" alt="image" src="https://github.com/user-attachments/assets/8b41026a-e6a8-447d-acb6-8e2a21a2b4d7" />
+<img width="1303" height="416" alt="image" src="https://github.com/user-attachments/assets/43ae5511-47f4-419d-9b32-25621fc2e48f" />
+
+
+
 ### DHT22
 | Pin  | ESP32 Pin |
 |------|-----------|
